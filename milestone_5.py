@@ -24,13 +24,6 @@ class Hangman:
             print(f"You have {self.num_lives} lives left")
 
     def ask_for_input(self):
-        while True:
-            if "_" not in self.word_guessed:
-                print(f"Congrats, you guessed the word {self.word}!")
-                break
-            elif self.num_lives == 0:
-                print(f"Sorry, you ran out of lives and lost! Correct word was {self.word}. Better luck next time!")
-                break
             guess = input("Enter a single letter: ")
             if len(guess) != 1 or guess.isalpha() != True:
                 print("Invalid letter. Please, enter a single alphabetical character.")
@@ -40,5 +33,17 @@ class Hangman:
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
 
-#a = Hangman(["pear"])
-#a.ask_for_input()
+def play_game(word_list):
+    num_lives = 5
+    game = Hangman(word_list, num_lives)
+    while True:
+        if game.num_lives == 0:
+            print("You lost!")
+            break
+        elif game.num_letters > 0:
+            game.ask_for_input()
+        elif game.num_lives > 0 and game.num_letters == 0:
+            print("Congratulations, you won the game!")
+            break
+
+play_game(["apple"])

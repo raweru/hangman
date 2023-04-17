@@ -340,11 +340,11 @@ class Hangman:
         guess = guess.lower()
         if guess in self.word:
             print(f"Good guess! {guess} is in the word.")
-        for letter in self.word:
-            if letter == guess:
-                guess_idx = self.word.index(guess)
-                self.word_guessed[guess_idx] = guess
-        self.num_letters -= 1
+            for letter in self.word:
+                if letter == guess:
+                    guess_idx = self.word.index(guess)
+                    self.word_guessed[guess_idx] = guess
+            self.num_letters -= 1
     
     def ask_for_input(self):
         while True:
