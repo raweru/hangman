@@ -46,4 +46,4 @@ def play_game(word_list):
             print("Congratulations, you won the game!")
             break
 
-play_game(["apple"])
+play_game(["apple", "pear", "peach"])
